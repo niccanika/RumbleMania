@@ -1,44 +1,34 @@
 fileFormatVersion: 2
-guid: 0e706a42ca2c59b46ae64f925d4a2060
+guid: 8f6f60e00c26585488b2d3c5ccf4fa6a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: metal
-    second: {fileID: 2100000, guid: aa498c60fc76d5540bbda313461fd490, type: 2}
+      name: 1K-Metallic Blue_Base Color
+    second: {fileID: 2800000, guid: 344f0d12d1b81ea40b7ecbba3259988c, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: metal2
-    second: {fileID: 2100000, guid: b9a94bb2278ae914e859c003c57f6b45, type: 2}
+      name: 1K-Metallic Blue_Base Color2
+    second: {fileID: 2800000, guid: 1690ef42e5858e5459328a63ccaa97e8, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: metal3
-    second: {fileID: 2100000, guid: 07ed96273d85e33489768c2dbf4bf0dd, type: 2}
+      name: 1K-Metallic Blue_Normal
+    second: {fileID: 2800000, guid: 3823d6c1262b1a0419e081051dfee741, type: 3}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: metal4
-    second: {fileID: 2100000, guid: 138d6a9a38c8fe446b2574b8737afe83, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: metal5
-    second: {fileID: 2100000, guid: 9e9208d303d43c2439b24f70a9a7bab0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: orb
-    second: {fileID: 2100000, guid: ba7c6ec18c92a0844a0b5cccb9643e4f, type: 2}
+      name: 1K-Metallic Blue_Roughness
+    second: {fileID: 2800000, guid: 7afd6addb935388439c2f40b4691d682, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
