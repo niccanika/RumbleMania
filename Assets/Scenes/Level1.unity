@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: robot_rig (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3ec1daf8366882844992566599cc307d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -228,6 +232,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ec1daf8366882844992566599cc307d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 635558227}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ec1daf8366882844992566599cc307d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 635558229}
   m_SourcePrefab: {fileID: 100100000, guid: 3ec1daf8366882844992566599cc307d, type: 3}
 --- !u!1 &139758759
 GameObject:
@@ -936,6 +943,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &635558229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635558225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbaa5d97473fa44fa46698031872d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &646239028
 GameObject:
   m_ObjectHideFlags: 0
