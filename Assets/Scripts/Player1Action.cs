@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    public float JumpSpeed = 1.0f;
+    public GameObject Player1;
     private Animator Anim;
     // Start is called before the first frame update
     void Start()
@@ -19,4 +21,9 @@ public class Player : MonoBehaviour
             Anim.SetTrigger("Punch");
         }
     }
+
+    public void JumpUp(){
+        Player1.transform.Translate(0, JumpSpeed, 0);
+    }
+
 }
