@@ -17,8 +17,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")){
-            Anim.SetTrigger("Punch");
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Anim.SetTrigger("LightPunch");
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Anim.SetTrigger("HeavyPunch");
+        }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            Anim.SetTrigger("LightKick");
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Anim.SetTrigger("HeavyKick");
         }
     }
 
