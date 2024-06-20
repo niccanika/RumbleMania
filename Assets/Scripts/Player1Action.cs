@@ -57,6 +57,15 @@ public class Player : MonoBehaviour
             }
         }
 
+        //aerial attack
+        if (Player1Layer0.IsTag("Jumping"))
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                Anim.SetTrigger("HeavyKick");
+            }
+        }
+
     }
 
     public void JumpUp(){
