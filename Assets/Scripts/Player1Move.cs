@@ -15,8 +15,8 @@ public class Player1Move : MonoBehaviour
     public GameObject Opponent;
     private Vector3 OppPosition;
     private AnimatorStateInfo Player1Layer0;
-    private bool FacingLeft = false;
-    private bool FacingRight = true;    
+    public static bool FacingLeft = false;
+    public static bool FacingRight = true;    
 
     // Start is called before the first frame update
     void Start()

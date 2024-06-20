@@ -6,9 +6,11 @@ public class Player : MonoBehaviour
 {
 
     public float JumpSpeed = 1.0f;
+    public float PunchSlideAmt = 15f;
     public GameObject Player1;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
+    private bool HeavyMoving = false;
 
 
     // Start is called before the first frame update
@@ -23,6 +25,21 @@ public class Player : MonoBehaviour
 
         //listen to animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+
+        //heavy punch slide
+        if(HeavyMoving == true)
+        {
+            if(Player1Move.FacingRight == true) 
+            {
+                Player1.transform.Translate(PunchSlideAmt * Time.deltaTime, 0, 0);
+            }
+
+            if(Player1Move.FacingLeft == true) 
+            {
+                Player1.transform.Translate(-PunchSlideAmt * Time.deltaTime, 0, 0);
+            }
+            
+        }
 
         //standing attacks
         if(Player1Layer0.IsTag("Motion"))
@@ -72,6 +89,10 @@ public class Player : MonoBehaviour
         Player1.transform.Translate(0, JumpSpeed, 0);
     }
 
+    public void HeavyMove(){
+        StartCoroutine(PunchSlide());
+    }
+
     public void FlipUp(){
         Player1.transform.Translate(0, JumpSpeed, 0);
         Player1.transform.Translate(1f, 0, 0);
@@ -82,4 +103,9 @@ public class Player : MonoBehaviour
         Player1.transform.Translate(-1f, 0, 0);
     }
 
+    IEnumerator PunchSlide(){
+        HeavyMoving = true;
+        yield return new WaitForSeconds(0.05f);
+        HeavyMoving = false;
+    }
 }
