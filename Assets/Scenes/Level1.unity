@@ -1263,6 +1263,10 @@ MonoBehaviour:
   WalkSpeed: 0.025
   Player1: {fileID: 0}
   Opponent: {fileID: 0}
+  LightPunch: {fileID: 0}
+  HeavyPunch: {fileID: 0}
+  LightKick: {fileID: 0}
+  HeavyKick: {fileID: 0}
 --- !u!54 &649107635
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3741,6 +3745,10 @@ MonoBehaviour:
   WalkSpeed: 0.03
   Player1: {fileID: 1373263692}
   Opponent: {fileID: 1158881289}
+  LightPunch: {fileID: 8300000, guid: 11206c41411fda245ac3a88c2e38f71b, type: 3}
+  HeavyPunch: {fileID: 8300000, guid: b56cac7371bc8ef4486424486dd5ffdc, type: 3}
+  LightKick: {fileID: 8300000, guid: c82060012ec10bd499b1a9027164cce1, type: 3}
+  HeavyKick: {fileID: 8300000, guid: 08e2be4dc6c46cb409a5f423e8fba934, type: 3}
 --- !u!1 &1956806260
 GameObject:
   m_ObjectHideFlags: 0
