@@ -120,6 +120,10 @@ public class Player1Move : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other){
+        Anim.SetTrigger("KnockOut");
+    }
+
     IEnumerator JumpPause() {
         yield return new WaitForSeconds(1.0f);
         isJumping = false;
