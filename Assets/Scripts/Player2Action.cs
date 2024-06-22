@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Action : MonoBehaviour
+public class Player2Action : MonoBehaviour
 {
 
     public float JumpSpeed = 1.0f;
@@ -36,12 +36,12 @@ public class Player1Action : MonoBehaviour
         //heavy punch slide
         if(HeavyMoving == true)
         {
-            if(Player1Move.FacingRight == true) 
+            if(Player2Move.FacingRightP2 == true) 
             {
                 Player1.transform.Translate(PunchSlideAmt * Time.deltaTime, 0, 0);
             }
 
-            if(Player1Move.FacingLeft == true) 
+            if(Player2Move.FacingLeftP2 == true) 
             {
                 Player1.transform.Translate(-PunchSlideAmt * Time.deltaTime, 0, 0);
             }
@@ -51,12 +51,12 @@ public class Player1Action : MonoBehaviour
         //super attack move
         if(SuperAttackMoving == true)
         {
-            if(Player1Move.FacingRight == true) 
+            if(Player2Move.FacingRightP2 == true) 
             {
                 Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
             }
 
-            if(Player1Move.FacingLeft == true) 
+            if(Player2Move.FacingLeftP2 == true) 
             {
                 Player1.transform.Translate(-SuperAttackSlideAmt * Time.deltaTime, 0, 0);
             }
@@ -66,30 +66,30 @@ public class Player1Action : MonoBehaviour
         //standing attacks
         if(Player1Layer0.IsTag("Motion"))
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1P2"))
             {
                 Anim.SetTrigger("LightPunch");
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2P2"))
             {
                 Anim.SetTrigger("HeavyPunch");
             }
 
-            if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire3P2"))
             {
                 Anim.SetTrigger("LightKick");
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("JumpP2"))
             {
                 Anim.SetTrigger("HeavyKick");
             }
-            if (Input.GetButtonDown("Block"))
+            if (Input.GetButtonDown("BlockP2"))
             {
                 Anim.SetTrigger("BlockOn");
             }
-            if (Input.GetButtonDown("SuperAttack"))
+            if (Input.GetButtonDown("SuperAttackP2"))
             {
                 Anim.SetTrigger("SuperAttack");
             }
@@ -97,7 +97,7 @@ public class Player1Action : MonoBehaviour
 
         if(Player1Layer0.IsTag("Block"))
         {
-            if (Input.GetButtonDown("Block"))
+            if (Input.GetButtonDown("BlockP2"))
             {
                 Anim.SetTrigger("BlockOff");
             }
@@ -106,7 +106,7 @@ public class Player1Action : MonoBehaviour
         //Crouching attack
         if (Player1Layer0.IsTag("Crouching"))
         {
-            if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire3P2"))
             {
                 Anim.SetTrigger("LightKick");
             }
@@ -115,7 +115,7 @@ public class Player1Action : MonoBehaviour
         //aerial attack
         if (Player1Layer0.IsTag("Jumping"))
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("JumpP2"))
             {
                 Anim.SetTrigger("HeavyKick");
             }
