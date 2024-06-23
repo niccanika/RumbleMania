@@ -25,6 +25,9 @@ public class Player1Move : MonoBehaviour
     public AudioClip HeavyKick;
     private AudioSource MyPlayer;
     public GameObject Restrict;
+    public Rigidbody RB;
+    public Collider BoxCollider;
+    public Collider CapsuleCollider;
 
 
     // Start is called before the first frame update
@@ -45,6 +48,11 @@ public class Player1Move : MonoBehaviour
             StartCoroutine(KnockedOut());
             // this.GetComponent<Player1Move>().enabled = false;
         }
+        if (SaveScript.Player2Health <= 0) {
+            Anim.SetTrigger("Victory");
+            Player1.GetComponent<Player1Action>().enabled = false;
+            this.GetComponent<Player1Move>().enabled = false;
+        } 
 
         //listen to animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
@@ -148,6 +156,17 @@ public class Player1Move : MonoBehaviour
         if (Restrict.gameObject.activeInHierarchy == false){
             WalkLeftP1 = true;
             WalkRightP1 =  true;
+        }
+
+        //blocking damage
+        if(Player1Layer0.IsTag("Block")){
+            RB.isKinematic = true;
+            BoxCollider.enabled = false;
+            CapsuleCollider.enabled = false;
+        } else {
+            BoxCollider.enabled = true;
+            CapsuleCollider.enabled = true;
+            RB.isKinematic = false;
         }
     }
 
