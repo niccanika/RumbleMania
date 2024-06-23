@@ -8,14 +8,17 @@ public class Player1Action : MonoBehaviour
     public float JumpSpeed = 1.0f;
     public float PunchSlideAmt = 15f;
     public float SuperAttackSlideAmt = 50f;
+    public float HeavyReactAmt = 3f;
     public GameObject Player1;
     private Animator Anim;
     private AnimatorStateInfo Player1Layer0;
     private bool HeavyMoving = false;
+    private bool HeavyReact = false;
     private bool SuperAttackMoving = false;
     private AudioSource MyPlayer;
     public AudioClip PunchWoosh;
     public AudioClip KickWoosh;
+    public static bool Hits = false;
 
 
 
@@ -48,20 +51,35 @@ public class Player1Action : MonoBehaviour
             
         }
 
-        //super attack move
-        if(SuperAttackMoving == true)
+        //heavy react slide
+        if(HeavyReact == true)
         {
             if(Player1Move.FacingRight == true) 
             {
-                Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+                Player1.transform.Translate(-HeavyReactAmt * Time.deltaTime, 0, 0);
             }
 
             if(Player1Move.FacingLeft == true) 
             {
-                Player1.transform.Translate(-SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+                Player1.transform.Translate(HeavyReactAmt * Time.deltaTime, 0, 0);
             }
             
         }
+
+        //super attack move
+        // if(SuperAttackMoving == true)
+        // {
+        //     if(Player1Move.FacingRight == true) 
+        //     {
+        //         Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+        //     }
+
+        //     if(Player1Move.FacingLeft == true) 
+        //     {
+        //         Player1.transform.Translate(-SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+        //     }
+            
+        // }
 
         //standing attacks
         if(Player1Layer0.IsTag("Motion"))
@@ -69,21 +87,25 @@ public class Player1Action : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 Anim.SetTrigger("LightPunch");
+                Hits = false;
             }
 
             if (Input.GetButtonDown("Fire2"))
             {
                 Anim.SetTrigger("HeavyPunch");
+                Hits = false;
             }
 
             if (Input.GetButtonDown("Fire3"))
             {
                 Anim.SetTrigger("LightKick");
+                Hits = false;
             }
 
             if (Input.GetButtonDown("Jump"))
             {
                 Anim.SetTrigger("HeavyKick");
+                Hits = false;
             }
             if (Input.GetButtonDown("Block"))
             {
@@ -92,6 +114,7 @@ public class Player1Action : MonoBehaviour
             if (Input.GetButtonDown("SuperAttack"))
             {
                 Anim.SetTrigger("SuperAttack");
+                Hits = false;
             }
         }
 
@@ -109,6 +132,7 @@ public class Player1Action : MonoBehaviour
             if (Input.GetButtonDown("Fire3"))
             {
                 Anim.SetTrigger("LightKick");
+                Hits = false;
             }
         }
 
@@ -118,6 +142,7 @@ public class Player1Action : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 Anim.SetTrigger("HeavyKick");
+                Hits = false;
             }
         }
 
@@ -131,18 +156,24 @@ public class Player1Action : MonoBehaviour
         StartCoroutine(PunchSlide());
     }
 
+    public void HeavyReaction(){
+        StartCoroutine(HeavySlide());
+    }
+
     public void SuperAttackMove(){
-        StartCoroutine(SuperSlide());
+        // StartCoroutine(SuperSlide());
+        // Player1.transform.Translate(0, JumpSpeed, 0);
+        // Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
     }
 
     public void FlipUp(){
         Player1.transform.Translate(0, JumpSpeed, 0);
-        Player1.transform.Translate(1f, 0, 0);
+        // Player1.transform.Translate(1f, 0, 0);
     }
 
     public void FlipBack(){
         Player1.transform.Translate(0, JumpSpeed, 0);
-        Player1.transform.Translate(-1f, 0, 0);
+        // Player1.transform.Translate(-1f, 0, 0);
     }
 
     public void PunchWooshSound(){
@@ -161,9 +192,15 @@ public class Player1Action : MonoBehaviour
         HeavyMoving = false;
     }
 
-    IEnumerator SuperSlide() {
-        SuperAttackMoving = true;
-        yield return new WaitForSeconds(0.01f);
-        SuperAttackMoving = false;
+    IEnumerator HeavySlide(){
+        HeavyReact = true;
+        yield return new WaitForSeconds(0.1f);
+        HeavyReact = false;
     }
+
+    // IEnumerator SuperSlide() {
+    //     SuperAttackMoving = true;
+    //     yield return new WaitForSeconds(0.01f);
+    //     SuperAttackMoving = false;
+    // }
 }

@@ -17,11 +17,14 @@ public class Player2Move : MonoBehaviour
     private AnimatorStateInfo Player1Layer0;
     public static bool FacingLeftP2 = false;
     public static bool FacingRightP2 = true;
+    public static bool WalkLeft = true;
+    public static bool WalkRight = true;
     public AudioClip LightPunch;
     public AudioClip HeavyPunch;
     public AudioClip LightKick;
     public AudioClip HeavyKick;
     private AudioSource MyPlayer;
+    public GameObject Restrict;
 
 
     // Start is called before the first frame update
@@ -85,16 +88,22 @@ public class Player2Move : MonoBehaviour
             if(Input.GetAxis("HorizontalP2") > 0)
             {
                 if(canWalkRight == true){
-                    Anim.SetBool("Forward", true);
-                    transform.Translate(WalkSpeed, 0, 0);
+                    if (WalkRight == true)
+                    {
+                        Anim.SetBool("Forward", true);
+                        transform.Translate(WalkSpeed, 0, 0);
+                    }
                 }
             }
 
             if(Input.GetAxis("HorizontalP2") < 0)
             {
                 if(canWalkLeft == true){
-                    Anim.SetBool("Backward", true);
-                    transform.Translate(-WalkSpeed, 0, 0);
+                    if (WalkLeft == true)
+                    {
+                        Anim.SetBool("Backward", true);
+                        transform.Translate(-WalkSpeed, 0, 0);
+                    }
                 }
             }
         }
@@ -124,6 +133,12 @@ public class Player2Move : MonoBehaviour
         if(Input.GetAxis("VerticalP2") == 0)
         {
             Anim.SetBool("Crouch", false);
+        }
+
+        //Reset to restrict
+        if (Restrict.gameObject.activeInHierarchy == false){
+            WalkLeft = true;
+            WalkRight =  true;
         }
     }
 
