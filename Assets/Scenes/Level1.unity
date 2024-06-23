@@ -1655,6 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 0.025
+  JumpSpeed: 1
   Player1: {fileID: 0}
   Opponent: {fileID: 0}
   LightPunch: {fileID: 0}
@@ -2656,6 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 0.05
+  JumpSpeed: 0.08
   Player1: {fileID: 1158881289}
   Opponent: {fileID: 1373263692}
   LightPunch: {fileID: 8300000, guid: 11206c41411fda245ac3a88c2e38f71b, type: 3}
@@ -6136,6 +6138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 0.05
+  JumpSpeed: 0.08
   Player1: {fileID: 1373263692}
   Opponent: {fileID: 1158881289}
   LightPunch: {fileID: 8300000, guid: 11206c41411fda245ac3a88c2e38f71b, type: 3}

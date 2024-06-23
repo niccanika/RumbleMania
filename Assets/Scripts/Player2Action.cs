@@ -19,6 +19,7 @@ public class Player2Action : MonoBehaviour
     public AudioClip PunchWoosh;
     public AudioClip KickWoosh;
     public static bool HitsP2 = false;
+    public static bool FlyingJumpP2 = false;
 
 
 
@@ -166,12 +167,18 @@ public class Player2Action : MonoBehaviour
 
     public void FlipUp(){
         Player1.transform.Translate(0, JumpSpeed, 0);
+        FlyingJumpP2 = true;
         // Player1.transform.Translate(1f, 0, 0);
     }
 
     public void FlipBack(){
         Player1.transform.Translate(0, JumpSpeed, 0);
+        FlyingJumpP2 = true;
         // Player1.transform.Translate(-1f, 0, 0);
+    }
+
+    public void IdleSpeed(){
+        FlyingJumpP2 = false;
     }
 
     public void PunchWooshSound(){

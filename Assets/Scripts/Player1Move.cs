@@ -8,6 +8,8 @@ public class Player1Move : MonoBehaviour
 
     private Animator Anim;
     public float WalkSpeed = 0.001f;
+    public float JumpSpeed = 1.0f;
+    private float MoveSpeed;
     private bool isJumping = false;
     private bool canWalkLeft = true;
     private bool canWalkRight = true;
@@ -36,11 +38,18 @@ public class Player1Move : MonoBehaviour
         Anim = GetComponentInChildren<Animator>();
         StartCoroutine(FaceRight());
         MyPlayer = GetComponentInChildren<AudioSource>();
+        MoveSpeed = WalkSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Player1Action.FlyingJumpP1 == true){
+            WalkSpeed = JumpSpeed;
+        } else {
+            WalkSpeed = MoveSpeed;
+        }
+
         //check if player 1 is knocked out
         if (SaveScript.Player1Health <= 0) {
             Anim.SetTrigger("KnockOut");
