@@ -38,6 +38,14 @@ public class Player1Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check if player 1 is knocked out
+        if (SaveScript.Player1Health <= 0) {
+            Anim.SetTrigger("KnockOut");
+            Player1.GetComponent<Player1Action>().enabled = false;
+            StartCoroutine(KnockedOut());
+            // this.GetComponent<Player1Move>().enabled = false;
+        }
+
         //listen to animator
         Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
         
@@ -202,5 +210,10 @@ public class Player1Move : MonoBehaviour
     IEnumerator RightIsTrue() {
         yield return new WaitForSeconds(0.15f);
         Player1.transform.Rotate(0, 180, 0);
+    }
+
+    IEnumerator KnockedOut() {
+        yield return new WaitForSeconds(0.1f);
+        this.GetComponent<Player1Move>().enabled = false;
     }
 }
