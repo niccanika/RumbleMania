@@ -108,8 +108,9 @@ public class Player2Move : MonoBehaviour
         // }
 
         //walking left and right
-        if(Player1Layer0.IsTag("Motion")){
-
+        if(Player1Layer0.IsTag("Motion"))
+        {
+            Time.timeScale = 1.0f;
             if(Input.GetAxis("HorizontalP2") > 0)
             {
                 if(canWalkRight == true){
