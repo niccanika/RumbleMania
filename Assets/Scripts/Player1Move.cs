@@ -35,6 +35,7 @@ public class Player1Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Opponent = GameObject.Find("Player2");
         Anim = GetComponentInChildren<Animator>();
         StartCoroutine(FaceRight());
         MyPlayer = GetComponentInChildren<AudioSource>();
