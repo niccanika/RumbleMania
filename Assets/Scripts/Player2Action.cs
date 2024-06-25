@@ -33,120 +33,122 @@ public class Player2Action : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //listen to animator
-        Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
-
-        //heavy punch slide
-        if(HeavyMoving == true)
+        if (SaveScript.TimeOut == false)
         {
-            if(Player2Move.FacingRightP2 == true) 
+
+            //listen to animator
+            Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+
+            //heavy punch slide
+            if(HeavyMoving == true)
             {
-                Player1.transform.Translate(PunchSlideAmt * Time.deltaTime, 0, 0);
+                if(Player2Move.FacingRightP2 == true) 
+                {
+                    Player1.transform.Translate(PunchSlideAmt * Time.deltaTime, 0, 0);
+                }
+
+                if(Player2Move.FacingLeftP2 == true) 
+                {
+                    Player1.transform.Translate(-PunchSlideAmt * Time.deltaTime, 0, 0);
+                }
+                
             }
 
-            if(Player2Move.FacingLeftP2 == true) 
+            //heavy react slide
+            if(HeavyReact == true)
             {
-                Player1.transform.Translate(-PunchSlideAmt * Time.deltaTime, 0, 0);
+                if(Player2Move.FacingRightP2 == true) 
+                {
+                    Player1.transform.Translate(-HeavyReactAmt * Time.deltaTime, 0, 0);
+                }
+
+                if(Player2Move.FacingLeftP2 == true) 
+                {
+                    Player1.transform.Translate(HeavyReactAmt * Time.deltaTime, 0, 0);
+                }
+                
             }
-            
+
+            //super attack move
+            // if(SuperAttackMoving == true)
+            // {
+            //     if(Player2Move.FacingRightP2 == true) 
+            //     {
+            //         Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+            //     }
+
+            //     if(Player2Move.FacingLeftP2 == true) 
+            //     {
+            //         Player1.transform.Translate(-SuperAttackSlideAmt * Time.deltaTime, 0, 0);
+            //     }
+                
+            // }
+
+            //standing attacks
+            if(Player1Layer0.IsTag("Motion"))
+            {
+                if (Input.GetButtonDown("Fire1P2"))
+                {
+                    Anim.SetTrigger("LightPunch");
+                    HitsP2 = false;
+                }
+
+                if (Input.GetButtonDown("Fire2P2"))
+                {
+                    Anim.SetTrigger("HeavyPunch");
+                    HitsP2 = false;
+                }
+
+                if (Input.GetButtonDown("Fire3P2"))
+                {
+                    Anim.SetTrigger("LightKick");
+                    HitsP2 = false;
+                }
+
+                if (Input.GetButtonDown("JumpP2"))
+                {
+                    Anim.SetTrigger("HeavyKick");
+                    HitsP2 = false;
+                }
+                if (Input.GetButtonDown("BlockP2"))
+                {
+                    Anim.SetTrigger("BlockOn");
+                }
+                if (Input.GetButtonDown("SuperAttackP2"))
+                {
+                    Anim.SetTrigger("SuperAttack");
+                    HitsP2 = false;
+                }
+            }
+
+            if(Player1Layer0.IsTag("Block"))
+            {
+                if (Input.GetButtonDown("BlockP2"))
+                {
+                    Anim.SetTrigger("BlockOff");
+                }
+            }
+
+            //Crouching attack
+            if (Player1Layer0.IsTag("Crouching"))
+            {
+                if (Input.GetButtonDown("Fire3P2"))
+                {
+                    Anim.SetTrigger("LightKick");
+                    HitsP2 = false;
+                }
+            }
+
+            //aerial attack
+            if (Player1Layer0.IsTag("Jumping"))
+            {
+                if (Input.GetButtonDown("JumpP2"))
+                {
+                    Anim.SetTrigger("HeavyKick");
+                    HitsP2 = false;
+                }
+            }
         }
-
-        //heavy react slide
-        if(HeavyReact == true)
-        {
-            if(Player2Move.FacingRightP2 == true) 
-            {
-                Player1.transform.Translate(-HeavyReactAmt * Time.deltaTime, 0, 0);
-            }
-
-            if(Player2Move.FacingLeftP2 == true) 
-            {
-                Player1.transform.Translate(HeavyReactAmt * Time.deltaTime, 0, 0);
-            }
-            
-        }
-
-        //super attack move
-        // if(SuperAttackMoving == true)
-        // {
-        //     if(Player2Move.FacingRightP2 == true) 
-        //     {
-        //         Player1.transform.Translate(SuperAttackSlideAmt * Time.deltaTime, 0, 0);
-        //     }
-
-        //     if(Player2Move.FacingLeftP2 == true) 
-        //     {
-        //         Player1.transform.Translate(-SuperAttackSlideAmt * Time.deltaTime, 0, 0);
-        //     }
-            
-        // }
-
-        //standing attacks
-        if(Player1Layer0.IsTag("Motion"))
-        {
-            if (Input.GetButtonDown("Fire1P2"))
-            {
-                Anim.SetTrigger("LightPunch");
-                HitsP2 = false;
-            }
-
-            if (Input.GetButtonDown("Fire2P2"))
-            {
-                Anim.SetTrigger("HeavyPunch");
-                HitsP2 = false;
-            }
-
-            if (Input.GetButtonDown("Fire3P2"))
-            {
-                Anim.SetTrigger("LightKick");
-                HitsP2 = false;
-            }
-
-            if (Input.GetButtonDown("JumpP2"))
-            {
-                Anim.SetTrigger("HeavyKick");
-                HitsP2 = false;
-            }
-            if (Input.GetButtonDown("BlockP2"))
-            {
-                Anim.SetTrigger("BlockOn");
-            }
-            if (Input.GetButtonDown("SuperAttackP2"))
-            {
-                Anim.SetTrigger("SuperAttack");
-                HitsP2 = false;
-            }
-        }
-
-        if(Player1Layer0.IsTag("Block"))
-        {
-            if (Input.GetButtonDown("BlockP2"))
-            {
-                Anim.SetTrigger("BlockOff");
-            }
-        }
-
-        //Crouching attack
-        if (Player1Layer0.IsTag("Crouching"))
-        {
-            if (Input.GetButtonDown("Fire3P2"))
-            {
-                Anim.SetTrigger("LightKick");
-                HitsP2 = false;
-            }
-        }
-
-        //aerial attack
-        if (Player1Layer0.IsTag("Jumping"))
-        {
-            if (Input.GetButtonDown("JumpP2"))
-            {
-                Anim.SetTrigger("HeavyKick");
-                HitsP2 = false;
-            }
-        }
-
     }
 
     public void JumpUp(){
