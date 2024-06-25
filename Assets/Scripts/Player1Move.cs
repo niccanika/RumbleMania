@@ -36,6 +36,10 @@ public class Player1Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FacingLeft = false;
+        FacingRight = true;
+        WalkRightP1 = true;
+        WalkLeftP1 = true;
         Opponent = GameObject.Find("Player2");
         WinCondition = GameObject.Find("WinCondition");
         WinCondition.gameObject.SetActive(false);

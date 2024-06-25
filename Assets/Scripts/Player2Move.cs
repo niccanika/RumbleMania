@@ -35,6 +35,10 @@ public class Player2Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FacingLeftP2 = false;
+        FacingRightP2 = true;
+        WalkLeft = true;
+        WalkRight = true;
         Opponent = GameObject.Find("Player1");
         Anim = GetComponentInChildren<Animator>();
         StartCoroutine(FaceRight());
