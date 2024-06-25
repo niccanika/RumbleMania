@@ -30,12 +30,15 @@ public class Player1Move : MonoBehaviour
     public Rigidbody RB;
     public Collider BoxCollider;
     public Collider CapsuleCollider;
+    public GameObject WinCondition;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Opponent = GameObject.Find("Player2");
+        WinCondition = GameObject.Find("WinCondition");
+        WinCondition.gameObject.SetActive(false);
         Anim = GetComponentInChildren<Animator>();
         StartCoroutine(FaceRight());
         MyPlayer = GetComponentInChildren<AudioSource>();
@@ -49,6 +52,20 @@ public class Player1Move : MonoBehaviour
         {
             Anim.SetBool("Forward", false);
             Anim.SetBool("Backward", false);
+
+            //get opponent position
+            OppPosition = Opponent.transform.position;
+
+            //facing left or right of the opponent
+            if (OppPosition.x > Player1.transform.position.x)
+            {
+                StartCoroutine(FaceLeft());
+            }
+
+            if (OppPosition.x < Player1.transform.position.x)
+            {
+                StartCoroutine(FaceRight());
+            }
         }
         if (SaveScript.TimeOut == false)
         {
@@ -64,11 +81,15 @@ public class Player1Move : MonoBehaviour
                 Player1.GetComponent<Player1Action>().enabled = false;
                 StartCoroutine(KnockedOut());
                 // this.GetComponent<Player1Move>().enabled = false;
+                WinCondition.gameObject.SetActive(true);
+                WinCondition.gameObject.GetComponent<LoseWin>().enabled = true;
             }
             if (SaveScript.Player2Health <= 0) {
                 Anim.SetTrigger("Victory");
                 Player1.GetComponent<Player1Action>().enabled = false;
                 this.GetComponent<Player1Move>().enabled = false;
+                WinCondition.gameObject.SetActive(true);
+                WinCondition.gameObject.GetComponent<LoseWin>().enabled = true;
             } 
 
             //listen to animator

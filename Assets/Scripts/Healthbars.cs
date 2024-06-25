@@ -12,25 +12,31 @@ public class Healthbars : MonoBehaviour
     public UnityEngine.UI.Image Player2Red;
     public TextMeshProUGUI TimerText;
     public float LevelTime = 99;
+    public GameObject WinCondition;
 
     // Start is called before the first frame update
     void Start()
     {
-        SaveScript.TimeOut = false;
+        SaveScript.TimeOut = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(LevelTime > 0)
+        if (SaveScript.TimeOut == false)
         {
-            LevelTime -= 1 * Time.deltaTime;
+            if(LevelTime > 0)
+            {
+                LevelTime -= 1 * Time.deltaTime;
+            }
+            if(LevelTime <= 0.1)
+            {
+                SaveScript.TimeOut = true;
+                WinCondition.gameObject.SetActive(true);
+                WinCondition.gameObject.GetComponent<LoseWin>().enabled = true;
+            }
         }
-        if(LevelTime <= 0.1)
-        {
-            SaveScript.TimeOut = true;
-        }
-
+        
         TimerText.text = Mathf.Round(LevelTime).ToString();
 
         Player1Green.fillAmount = SaveScript.Player1Health;
