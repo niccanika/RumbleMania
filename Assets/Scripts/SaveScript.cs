@@ -12,10 +12,24 @@ public class SaveScript : MonoBehaviour
     public static int Player1Wins = 0;
     public static int Player2Wins = 0;
     public static int Round = 0;
+    public static string P1Select;
+    public static string P2Select;
+    public static GameObject Player1Load;
+    public static GameObject Player2Load;
+
+    // void Awake()
+    // {
+    //     P1Select = "VajataliP1";
+    //     P2Select = "VajataliP2";
+    //     Player1Health = 1.0f;
+    //     Player2Health = 1.0f;
+    // }
 
     // Start is called before the first frame update
     void Start()
     {
+        P1Select = "ColossusP1";
+        P2Select = "SinsooP2";
         Player1Health = 1.0f;
         Player2Health = 1.0f;
     }
