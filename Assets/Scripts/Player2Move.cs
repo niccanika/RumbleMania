@@ -95,6 +95,7 @@ public class Player2Move : MonoBehaviour
             }
 
             //get opponent position
+            Debug.Log(Opponent);
             OppPosition = Opponent.transform.position;
 
             //facing left or right of the opponent
