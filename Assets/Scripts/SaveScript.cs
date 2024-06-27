@@ -16,6 +16,8 @@ public class SaveScript : MonoBehaviour
     public static string P2Select;
     public static GameObject Player1Load;
     public static GameObject Player2Load;
+    public static bool P1Reacting = false;
+    public static bool P2Reacting = false;
 
     // void Awake()
     // {
@@ -28,10 +30,12 @@ public class SaveScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        P1Select = "ColossusP1";
-        P2Select = "SinsooP2";
+        P1Select = "VajataliP1";
+        P2Select = "ColossusP2";
         Player1Health = 1.0f;
         Player2Health = 1.0f;
+        P1Reacting = false;
+        P2Reacting = false;
     }
 
     // Update is called once per frame

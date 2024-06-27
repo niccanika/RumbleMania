@@ -51,36 +51,41 @@ public class Player1Trigger : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if (isPlayer1 == true)
-        {
-            if(other.gameObject.CompareTag("Player2")){
-                if (EmitFX == true){
-                    Particles1.Play();
-                    Particles2.Play();
-                    Time.timeScale = PauseSpeed;
-                }
-                Player1Action.Hits = true;
-                SaveScript.Player2Health -= DamageAmt;
-                if (SaveScript.Player2Timer < 2.0f){
-                    SaveScript.Player2Timer += 2.0f;
-                }
-            }
-        }
-        else if (isPlayer1 == false)
-        {
-            if(other.gameObject.CompareTag("Player1")){
-                if (EmitFX == true){
-                    Particles1.Play();
-                    Particles2.Play();
-                    Time.timeScale = PauseSpeed;
-                }
-                Player2Action.HitsP2 = true;
-                SaveScript.Player1Health -= DamageAmt;
-                if (SaveScript.Player1Timer < 2.0f){
-                    SaveScript.Player1Timer += 2.0f;
+        if(SaveScript.P2Reacting == false){
+            if (isPlayer1 == true)
+            {
+                if(other.gameObject.CompareTag("Player2")){
+                    if (EmitFX == true){
+                        Particles1.Play();
+                        Particles2.Play();
+                        Time.timeScale = PauseSpeed;
+                    }
+                    Player1Action.Hits = true;
+                    SaveScript.Player2Health -= DamageAmt;
+                    if (SaveScript.Player2Timer < 2.0f){
+                        SaveScript.Player2Timer += 2.0f;
+                    }
                 }
             }
         }
+        if(SaveScript.P1Reacting == false){
+            if (isPlayer1 == false)
+            {
+                if(other.gameObject.CompareTag("Player1")){
+                    if (EmitFX == true){
+                        Particles1.Play();
+                        Particles2.Play();
+                        Time.timeScale = PauseSpeed;
+                    }
+                    Player2Action.HitsP2 = true;
+                    SaveScript.Player1Health -= DamageAmt;
+                    if (SaveScript.Player1Timer < 2.0f){
+                        SaveScript.Player1Timer += 2.0f;
+                    }
+                }
+            }
+        }
+        
         
     }
 }

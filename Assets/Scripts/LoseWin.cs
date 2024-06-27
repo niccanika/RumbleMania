@@ -10,6 +10,7 @@ public class LoseWin : MonoBehaviour
     public AudioSource MyPlayer;
     public AudioClip LoseAudio;
     public float PauseTime = 1.0f;
+    public int Scene =  0;
 
 
     // Start is called before the first frame update
@@ -37,6 +38,6 @@ public class LoseWin : MonoBehaviour
             SaveScript.Player2Wins++;
         }
         yield return new WaitForSeconds(PauseTime);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(Scene);
     }
 }

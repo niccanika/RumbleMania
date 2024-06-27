@@ -77,6 +77,13 @@ public class Player2Move : MonoBehaviour
 
             //listen to animator
             Player1Layer0 = Anim.GetCurrentAnimatorStateInfo(0);
+
+            if (Player1Layer0.IsTag("React")){
+                SaveScript.P2Reacting = true;
+            }
+            else {
+                SaveScript.P2Reacting = false;
+            }
             
             //screen bounds so character doesnt exit screen
             Vector3 ScreenBounds = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -194,26 +201,29 @@ public class Player2Move : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        if(other.gameObject.CompareTag("FistLight")){
-            Anim.SetTrigger("HeadReact");
-            MyPlayer.clip = LightPunch;
-            MyPlayer.Play();
+        if(SaveScript.P2Reacting == false){
+            if(other.gameObject.CompareTag("FistLight")){
+                Anim.SetTrigger("HeadReact");
+                MyPlayer.clip = LightPunch;
+                MyPlayer.Play();
+            }
+            if(other.gameObject.CompareTag("FistHeavy")){
+                Anim.SetTrigger("BigReact");
+                MyPlayer.clip = HeavyPunch;
+                MyPlayer.Play();
+            }
+            if(other.gameObject.CompareTag("KickHeavy")){
+                Anim.SetTrigger("BigReact");
+                MyPlayer.clip = HeavyKick;
+                MyPlayer.Play();
+            }
+            if(other.gameObject.CompareTag("KickLight")){
+                Anim.SetTrigger("HeadReact");
+                MyPlayer.clip = LightKick;
+                MyPlayer.Play();
+            }
         }
-        if(other.gameObject.CompareTag("FistHeavy")){
-            Anim.SetTrigger("BigReact");
-            MyPlayer.clip = HeavyPunch;
-            MyPlayer.Play();
-        }
-        if(other.gameObject.CompareTag("KickHeavy")){
-            Anim.SetTrigger("BigReact");
-            MyPlayer.clip = HeavyKick;
-            MyPlayer.Play();
-        }
-        if(other.gameObject.CompareTag("KickLight")){
-            Anim.SetTrigger("HeadReact");
-            MyPlayer.clip = LightKick;
-            MyPlayer.Play();
-        }
+        
         
     }
 
