@@ -10,7 +10,7 @@ public class LoseWin : MonoBehaviour
     public AudioSource MyPlayer;
     public AudioClip LoseAudio;
     public float PauseTime = 1.0f;
-    public int Scene =  0;
+    public int Scene =  3;
 
 
     // Start is called before the first frame update
